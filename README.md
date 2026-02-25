@@ -1,4 +1,4 @@
-# hello-world
+# 나의 목표
 Github flow practicing
 
 Cloud Security + AI 기반 Detection/Policy 엔지니어
