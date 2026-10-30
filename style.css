@@ -8,6 +8,9 @@ h1, h2, h3 { color: var(--ink); }
 [data-testid="stSidebar"] > div:first-child { padding-top: 2rem; }
 .side-brand { font: italic 800 2.6rem/1.1 Georgia, serif; letter-spacing: -2px; color: var(--blue); }
 .side-brand span { display:block; font: 700 .62rem/2.8 sans-serif; letter-spacing: 2px; color: #52688d; }
+.st-key-home button { background:transparent; border:0; padding:0; box-shadow:none; color:var(--blue); }
+.st-key-home button p { font:italic 800 2.6rem/1.1 Georgia,serif; letter-spacing:-2px; }
+.st-key-home button:hover { background:transparent; color:#2448ad; }
 .side-sticker { display:inline-block; margin: 1rem 0; padding: .35rem .7rem; background: #e0f0dc; color: #345840; border:1px solid #bdd5ba; border-radius:4px; transform:rotate(-3deg); font-size:.65rem; font-weight:800; letter-spacing:1px; }
 [data-testid="stSidebar"] [role="radiogroup"] { gap: .25rem; }
 [data-testid="stSidebar"] [data-testid="stRadio"] label { border-radius: 12px; padding: .5rem; transition: background .15s; }

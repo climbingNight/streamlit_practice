@@ -57,13 +57,19 @@ def career_note(name, job):
 
 html(f"<style>{Path(__file__).with_name('style.css').read_text(encoding='utf-8')}</style>")
 
+def go_home():
+    st.session_state["career"] = None
+
+
 with st.sidebar:
-    html('<div class="side-brand">next track<span>DATA & AI CAREER CLUB</span></div>')
+    st.button("next track", key="home", on_click=go_home, help="기본화면으로 돌아가기")
+    html('<div class="side-brand"><span>DATA & AI CAREER CLUB</span></div>')
     html('<div class="side-sticker">✦ YOUR NEXT CHAPTER ✦</div>')
     st.caption("어떤 일을 하는지부터, 나의 다음 트랙을 찾아봐요.")
     selected = st.radio(
         "탐색할 직업",
         options=list(CAREERS),
+        index=None,
         format_func=lambda name: f"{CAREERS[name]['icon']}  {name}",
         captions=[job["short"] for job in CAREERS.values()],
         key="career",
@@ -72,11 +78,11 @@ with st.sidebar:
     st.caption("💡 모바일에서는 왼쪽 위 메뉴 버튼으로 직업 목록을 열 수 있어요.")
     html('<div class="side-footer">7 TRACKS · ENDLESS POSSIBILITIES<br>조금씩 알아가도 괜찮아. ♡</div>')
 
-job = CAREERS[selected]
-track = list(CAREERS).index(selected) + 1
-
 html('''<div class="masthead"><span>✳ NEXT TRACK / CAREER EDITION</span>
-<span>DATA · AI · YOU</span></div>
+<span>DATA · AI · YOU</span></div>''')
+
+if selected is None:
+    html('''
 <section class="hero">
   <div class="hero-copy"><span class="eyebrow">A LITTLE CURIOUS, A LITTLE BRAVE</span>
     <h1>너의 다음 트랙은,<br><em>어떤 모습일까?</em></h1>
@@ -86,6 +92,12 @@ html('''<div class="masthead"><span>✳ NEXT TRACK / CAREER EDITION</span>
   <div class="disc-art" aria-hidden="true"><div class="orbit">✧</div><div class="disc"><div class="disc-center">NEXT<br>TRACK</div></div>
     <span class="art-label">PLAY YOUR<br>POSSIBILITIES ↗</span><span class="little-star">✳</span></div>
 </section>''')
+    st.write("")
+    st.info("왼쪽 사이드바에서 탐색할 직업을 선택해 보세요. 소개부터 실무와 핵심 역량까지 알아볼 수 있어요.", icon="💿")
+    st.stop()
+
+job = CAREERS[selected]
+track = list(CAREERS).index(selected) + 1
 
 html(
     f'<section class="track-header" style="--track-color:{job["color"]}">'
