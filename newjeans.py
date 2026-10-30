@@ -62,7 +62,7 @@ def go_home():
 
 
 with st.sidebar:
-    st.button("next track", key="home", on_click=go_home, help="기본화면으로 돌아가기")
+    st.button("next track", key="home", on_click=go_home)
     html('<div class="side-brand"><span>DATA & AI CAREER CLUB</span></div>')
     html('<div class="side-sticker">✦ YOUR NEXT CHAPTER ✦</div>')
     st.caption("어떤 일을 하는지부터, 나의 다음 트랙을 찾아봐요.")
